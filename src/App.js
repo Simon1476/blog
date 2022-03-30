@@ -44,12 +44,12 @@ function App() {
         글제목변경(array);
       }}>저장</button>
     </div>
-      
+    
+    <Profile/>
     <button onClick={modalChange}>열고닫기</button>
 
        {
          modal === true ? <Modal 글제목={글제목} 누른제목={누른제목} /> : null
-
        }
 
     </div>
@@ -67,4 +67,23 @@ function Modal(props) {
   );
 }
 
+class Profile extends React.Component {
+  constructor() {
+    super();
+    this.state = {name: 'Kim', age : 30}
+  }
+
+  changeName() {
+     this.setState({name: 'Park'}) 
+  }
+  render() {
+    return (
+      <div>
+        <h3>프로필입니다.</h3>
+        <p>저는 {this.state.name}입니다.</p>
+        <button onClick={ this.changeName.bind(this)}>버튼</button>
+      </div>
+    )
+  }
+}
 export default App;
